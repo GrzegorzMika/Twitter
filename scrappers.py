@@ -14,3 +14,5 @@ def authorization(keys):
     return api
 
 api = authorization(twitter_keys)
+
+print(api)
