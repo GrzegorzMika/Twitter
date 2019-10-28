@@ -72,7 +72,7 @@ class TwitterMiner:
 
         return data
 
-    def boss(self, wait=900, batch=96):
+    def drudgery(self, wait=900, batch=96):
         while True:
             counter = 0
             twitter_data = {}
@@ -87,3 +87,17 @@ class TwitterMiner:
             all_tweets = pd.concat([pd.DataFrame(twitter_data[i][0]) for i in twitter_data]).reset_index(drop=True)
             filename = 'tweets_about_' + self.keyword + '_' + str(datetime.date.today()) + '.csv'
             all_tweets.to_csv(filename)
+
+    def boss(self, wait=900, batch=96):
+        counter = 0
+        twitter_data = {}
+        while counter < batch:
+            name = 'batch number ' + str(counter)
+            print(name)
+            twitter_data[name] = []
+            twitter_data[name].append(self.miner())
+            time.sleep(wait)
+            counter += 1
+        all_tweets = pd.concat([pd.DataFrame(twitter_data[i][0]) for i in twitter_data]).reset_index(drop=True)
+        filename = 'tweets_about_' + self.keyword + '_' + str(datetime.date.today()) + '.csv'
+        all_tweets.to_csv(filename)
