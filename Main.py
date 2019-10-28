@@ -1,7 +1,7 @@
 import scrappers
 from pathlib import Path
 
-twitter_keys = Path('../../Twitter_API_key.txt').read_text().split('\n')
+twitter_keys = Path('../Twitter_API_key.txt').read_text().split('\n')
 twitter_keys = {
     'consumer_key': twitter_keys[0],
     'consumer_secret': twitter_keys[1],
