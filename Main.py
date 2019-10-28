@@ -9,5 +9,5 @@ twitter_keys = {
     'access_token_secret': twitter_keys[3]
 }
 
-TwitterMiner = scrappers.TwitterMiner(keys=twitter_keys, keyword='#brexit', last=1000, once=1500)
-TwitterMiner.boss(batch=4)
+TwitterMiner = scrappers.TwitterMiner(keys=twitter_keys, keyword='#brexit', last=500, once=1500)
+TwitterMiner.boss(batch=8)
